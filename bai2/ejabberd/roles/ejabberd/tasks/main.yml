@@ -1,0 +1,27 @@
+---
+  - name: install ejabberd
+    apt:
+      name: ejabberd
+      state: present
+
+
+  - name: cau hinh ejabberd
+    template:
+      src: ejab.yml.j2
+      dest: /etc/ejabberd/ejabberd.yml
+      mode: 0644
+    notify:
+      - start ejabberd
+  
+  - name: restart ejabberd
+    service:
+      name: ejabberd
+      state: restarted
+  
+  - name: pause
+    pause:
+      seconds: 6
+
+  - name: register 
+    command: ejabberdctl register hannv vccloud.com 123
+     

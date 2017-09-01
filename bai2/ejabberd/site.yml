@@ -1,0 +1,5 @@
+---
+  - hosts: slave
+    remote_user: root
+    roles:
+      - ejabberd
